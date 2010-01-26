@@ -2,7 +2,7 @@ module Reportme
   class Report
   
     attr_accessor :name
-    attr_accessor :setup_callback
+    attr_accessor :setup_callback, :inserted_callback
     
     def initialize(report_factory, name, opts={})
       
@@ -55,6 +55,10 @@ module Reportme
     
     def setup(&block)
       @setup_callback = block
+    end
+
+    def inserted(&block)
+      @inserted_callback = block
     end
     
     def sql(von, bis, period_name)

@@ -403,6 +403,7 @@ module Reportme
 
           exec("insert into #{table_name} #{sql};")
           
+          r.inserted_callback.call(von, bis, period_name) if r.inserted_callback
         
           remember_report_creation(r, period_name, _von)
         end
